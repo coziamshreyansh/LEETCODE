@@ -1,3 +1,4 @@
+// O(N) space
 class Solution {
 public:
     vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
@@ -29,5 +30,31 @@ public:
             }
         }
         return ans;
+    }
+};
+//////////O(1) space
+class Solution {
+public:
+    vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
+        int n = nums.size();
+        int total_sum = 0;
+        vector<int> result(n, 0);
+ 
+        for(int i=0; i<n; i++) {
+            total_sum += nums[i];
+        }
+ 
+        int curr_sum = 0;
+        for(int i=0; i<n; i++) {
+            curr_sum += nums[i];
+ 
+            int before_index_sum = (nums[i] * (i+1) - curr_sum);
+            int after_index_sum = abs(nums[i]*(n-i-1) - (total_sum - curr_sum));
+ 
+            result[i] = (before_index_sum) + (after_index_sum);
+        }
+ 
+ 
+        return result;
     }
 };
