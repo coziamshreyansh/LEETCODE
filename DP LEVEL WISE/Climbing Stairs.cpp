@@ -16,4 +16,4 @@ public:
         memo[cs] = ways;
         return ways;
     }
-};
+}; 
